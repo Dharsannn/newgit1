@@ -1,0 +1,17 @@
+import requests
+
+def download_file(url, destination):
+    response = requests.get(url)
+    
+    if response.status_code == 200:
+        with open(destination, 'wb') as file:
+            file.write(response.content)
+        print(f"Downloaded successfully to {destination}")
+    else:
+        print(f"Failed to download. Status code: {response.status_code}")
+
+# Example usage:
+url = "https://example.com/sample_file.txt"  # Replace with the actual URL of the file you want to download
+destination = "sample_file.txt"  # Specify the desired destination file name
+
+download_file(url, destination)
